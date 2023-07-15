@@ -29,6 +29,12 @@
                           <h6 class="fw-semibold mb-0">Description</h6>
                         </th>
                         <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Address</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Phone Number</h6>
+                        </th>
+                        <th class="border-bottom-0">
                             <h6 class="fw-semibold mb-0">Actions</h6>
                         </th>
                       </tr>
@@ -44,6 +50,12 @@
                             <td class="border-bottom-0">
                             <p class="mb-0 fw-normal">{{ $manufacture->description }}</p>
                             </td>
+                            <td class="border-bottom-0">
+                              <p class="mb-0 fw-normal">{{ $manufacture->address }}</p>
+                              </td>
+                              <td class="border-bottom-0">
+                                <p class="mb-0 fw-normal">{{ $manufacture->phone }}</p>
+                                </td>
                             <td class="border-bottom-0">
                             <div class="d-flex align-items-center gap-2">
                                 <button type="button" wire:click="editManufacture({{$manufacture->id}})" class="btn btn-info btn-sm float-end" data-bs-target="#editmanufacureModal">

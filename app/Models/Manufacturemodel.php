@@ -17,6 +17,9 @@ class Manufacturemodel extends Model
     [
         'name',
         'description',
+        'address',
+        'phone',
+
     ];
 
     public function products()
