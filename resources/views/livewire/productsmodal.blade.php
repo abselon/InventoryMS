@@ -63,6 +63,22 @@
             @enderror
         </div>
 
+        <div class="mb-3">
+            <label for="">Wholesale Price</label>
+            <input type="text" wire:model.defer="wholesale_price" class="form-control">
+            @error('wholesale_price')
+                <span class="text-danger" style="font-size: 12.5px;">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="">Selling Price</label>
+            <input type="text" wire:model.defer="selling_price" class="form-control">
+            @error('selling_price')
+                <span class="text-danger" style="font-size: 12.5px;">{{ $message }}</span>
+            @enderror
+        </div>
+
            <div class="mb-3">
             <label for="category">Category</label>
             <select wire:model="selectedcategories" id="selectedcategories" class="form-control">

@@ -20,7 +20,7 @@ class Products extends Component
     public $selectedmanufacture = null;
 
     public $subcategories, $manufacture;
-    public $name, $description, $quantity, $expiry_date, $restock_threshold; 
+    public $name, $description, $quantity, $expiry_date, $restock_threshold, $wholesale_price, $selling_price; 
     public $products_id;
     protected $listeners = ['deleteConfirmed' => 'deleteProduct'];
 
@@ -36,6 +36,8 @@ class Products extends Component
         'quantity' => 'required|integer',
         'expiry_date' => 'required|date',
         'restock_threshold' => 'required|integer',
+        'wholesale_price' => 'required|integer',
+        'selling_price' => 'required|integer',
     ];
     public function updated($fields)
     {
@@ -48,7 +50,8 @@ class Products extends Component
             'selectedmanufacture' => 'required|exists:subcategories,id', // ensure the manufacture exists
             'expiry_date' => 'required|date',
             'restock_threshold' => 'required|integer',
-
+            'wholesale_price' => 'required|integer',
+            'selling_price' => 'required|integer',
         ]);
     }
 
@@ -88,7 +91,8 @@ class Products extends Component
             'selectedmanufacture' => 'required|exists:manufacture,id',
             'expiry_date' => 'required|date',
             'restock_threshold' => 'required|integer',
-
+            'wholesale_price' => 'required|integer',
+            'selling_price' => 'required|integer',
         ]);
 
         $products = new Productsmodel();
@@ -101,6 +105,9 @@ class Products extends Component
         $products->manufacture_id = $this->selectedmanufacture;
         $products->expiry_date = $this->expiry_date;
         $products->restock_threshold = $this->restock_threshold;
+        $products->wholesale_price = $this->wholesale_price;
+        $products->selling_price = $this->selling_price;
+
 
 
         $products->save();
@@ -115,6 +122,8 @@ class Products extends Component
         $this->selectedmanufacture = '';
         $this->expiry_date = null;
         $this->restock_threshold = null;
+        $this->wholesale_price = null;
+        $this->selling_price = null;
 
     }
 
@@ -145,6 +154,8 @@ class Products extends Component
             $this->products_id = $products->id;
             $this->name = $products->name;
             $this->description = $products->description;
+            $this->wholesale_price = $products->wholesale_price;
+            $this->selling_price = $products->selling_price;
             $this->dispatchBrowserEvent('show-edit-product-modal');
         }
         // else
@@ -157,6 +168,8 @@ class Products extends Component
     {
         $this->description = '';
         $this->name = '';
+        $this->wholesale_price = '';
+        $this->selling_price = '';
     }
 
     public function updateProduct()
@@ -164,11 +177,15 @@ class Products extends Component
         $validatedData = $this->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'wholesale_price' => 'required|integer',
+            'selling_price' => 'required|integer',
         ]);
         Productsmodel::where('id', $this->products_id)->update(
             [
                 'name'=>$validatedData['name'],
                 'description' => $validatedData['description'],
+                'wholesale_price' => $validatedData['wholesale_price'],
+                'selling_price' => $validatedData['selling_price'],
             ]
         );
 
@@ -177,6 +194,8 @@ class Products extends Component
 
         $this->description = '';
         $this->name = '';
+        $this->wholesale_price = '';
+        $this->selling_price = '';
 
         $this->dispatchBrowserEvent('close-model');
     }  

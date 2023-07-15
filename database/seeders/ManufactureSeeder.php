@@ -17,16 +17,22 @@ class manufactureSeeder extends Seeder
         DB::table('manufacture')->insert([
             'name'=>'Hitachi',
             'description'=>'tech company',
+            'address'=>'street 1',
+            'phone'=>'03003856471',
         ]);
 
         DB::table('manufacture')->insert([
             'name'=>'Panadol',
             'description'=>'paracetamol producer',
+            'address'=>'street 2',
+            'phone'=>'03003856472',
         ]);
 
         DB::table('manufacture')->insert([
             'name'=>'Young',
             'description'=>'bakery and foodstuff',
+            'address'=>'street 3',
+            'phone'=>'03003856473',
         ]);
     }
 }

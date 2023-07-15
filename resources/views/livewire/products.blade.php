@@ -47,10 +47,14 @@
                             <h6 class="fw-semibold mb-0">Expiry Date</h6>
                         </th>
 
-                        {{-- <th class="border-bottom-0">
+                        <th class="border-bottom-0">
+                            <h6 class="fw-semibold mb-0">Wholesale Price</h6>
+                        </th>
+
+                        <th class="border-bottom-0">
                             <h6 class="fw-semibold mb-0">Selling Price</h6>
                         </th>
-                        <th class="border-bottom-0">
+                        {{-- <th class="border-bottom-0">
                             <h6 class="fw-semibold mb-0">Last Sold Date</h6>
                         </th>
                         <th class="border-bottom-0">
@@ -92,6 +96,9 @@
                                         {{-- <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $product->created_at }}</h6></td> --}}
                                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $product->restock_threshold }}</h6></td>
                                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $product->expiry_date }}</h6></td>
+                                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $product->wholesale_price }}</h6></td>
+                                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $product->selling_price }}</h6></td>
+
 
 
                                         <td class="border-bottom-0">

@@ -17,7 +17,10 @@ class Manufacture extends Component
     protected $rules = [
         'name' => 'required|string|max:255',
         'description' => 'required|string',
-    ];
+        'address' => 'required|string',
+        'phone' => 'required|string',
+
+        ];
     public function deleteConfirmation($id)
     {
         $this->delete_id = $id;
@@ -54,13 +57,15 @@ class Manufacture extends Component
         ]);
     }
 
-    public $name, $description, $manufacture_id;
+    public $name, $description, $manufacture_id, $address, $phone;
 
     public function updated($fields)
     {
         $this->validateOnly($fields, [
             'description' => 'required',
             'name' => 'required',
+            'address' => 'required|string',
+            'phone' => 'required|string',
         ]);
     }
 
@@ -70,6 +75,8 @@ class Manufacture extends Component
         $this->validate([
             'description' => 'required',
             'name' => 'required',
+            'address' => 'required|string',
+            'phone' => 'required|string',
         ]);
 
 
@@ -78,6 +85,9 @@ class Manufacture extends Component
 
         $manufacture->description = $this->description;
         $manufacture->name = $this->name;
+        $manufacture->address = $this->address;
+        $manufacture->phone = $this->phone;
+
 
 
         $manufacture->save();
@@ -88,6 +98,8 @@ class Manufacture extends Component
 
         $this->description = '';
         $this->name = '';
+        $this->address = '';
+        $this->phone = '';
 
         $this->dispatchBrowserEvent('close-model');
     }
@@ -100,6 +112,9 @@ class Manufacture extends Component
             $this->manufacture_id = $manufacture->id;
             $this->name = $manufacture->name;
             $this->description = $manufacture->description;
+            $this->address = $manufacture->address;
+            $this->phone = $manufacture->phone;
+
             $this->dispatchBrowserEvent('show-edit-manufacture-modal');
 
         }
@@ -109,6 +124,8 @@ class Manufacture extends Component
     {
         $this->description = '';
         $this->name = '';
+        $this->address = '';
+        $this->phone = '';
     }
 
     public function updateManufacture()
@@ -116,11 +133,15 @@ class Manufacture extends Component
         $validatedData = $this->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'address' => 'required|string',
+            'phone' => 'required|string',
         ]);
         Manufacturemodel::where('id', $this->manufacture_id)->update(
             [
                 'name'=>$validatedData['name'],
                 'description' => $validatedData['description'],
+                'address' => $validatedData['address'],
+                'phone' => $validatedData['phone'],
             ]
         );
 
@@ -129,6 +150,8 @@ class Manufacture extends Component
 
         $this->description = '';
         $this->name = '';
+        $this->address = '';
+        $this->phone = '';
 
         $this->dispatchBrowserEvent('close-model');
     }

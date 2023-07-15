@@ -24,6 +24,22 @@
                     <span class="text-danger" style="font-size: 12.5px;">{{ $message }}</span>
                 @enderror
             </div>
+
+            <div class="mb-3">
+              <label for="">Address</label>
+              <input type="text" wire:model.defer = "address" class="form-control">
+              @error('address')
+                  <span class="text-danger" style="font-size: 12.5px;">{{ $message }}</span>
+              @enderror
+          </div>
+
+          <div class="mb-3">
+            <label for="">Phone Number</label>
+            <input type="text" wire:model.defer = "phone" class="form-control">
+            @error('phone')
+                <span class="text-danger" style="font-size: 12.5px;">{{ $message }}</span>
+            @enderror
+        </div>
             
           </div>
           <div class="modal-footer">
